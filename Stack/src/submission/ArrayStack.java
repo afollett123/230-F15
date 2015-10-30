@@ -6,34 +6,32 @@ public class ArrayStack<T> implements Stack<T> {
 	private T[] data;
 	private int top;
 
-	@Override
-	public void push(T newEntry) {
-		// TODO Auto-generated method stub
+	
+	public void push(T item) {
+		data[top++] = item;
 		
 	}
 
-	@Override
+	
 	public T pop() {
-		// TODO Auto-generated method stub
-		return null;
+		T result = data [top - 1];
+		data[--top] = null;
+		return result;
 	}
 
-	@Override
+	
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		return data[top - 1];
 	}
 
-	@Override
+	
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return top == 0;
 	}
 
-	@Override
+	
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		//return  == 0;
 	}
 	
 	public String toString() {
