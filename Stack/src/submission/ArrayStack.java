@@ -21,17 +21,21 @@ public class ArrayStack<T> implements Stack<T> {
 
 	
 	public T peek() {
-		return data[top - 1];
+		return data;
+			
 	}
 
 	
 	public boolean isEmpty() {
-		return top == 0;
+		return (data.length == 0);
 	}
 
 	
 	public void clear() {
-		//return  == 0;
+		// for loop, set all data values to null
+		//set top to 0 - disadvantage
+		//re initialize data
+		data = (T[]) new Object [MAX];
 	}
 	
 	public String toString() {
