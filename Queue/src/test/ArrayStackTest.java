@@ -3,10 +3,10 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import adt.Stack;
-import submission.*;
+import submission.ArrayStack;
 
-public class LinkedStackTest {
-	private Stack<String> stack = new MyLinkedStack<String>();
+public class ArrayStackTest {
+	private Stack<String> stack = new ArrayStack<String>();
 	private static int MAX_CAPACITY = 100;
 
 	@Test
@@ -67,8 +67,8 @@ public class LinkedStackTest {
 		stack.clear();
 		String s = "";
 		for (int i = 0; i < MAX_CAPACITY; i++) {
-			stack.push(Integer.toString(i));
-			s = "| " + i + " |\n" + s;
+			stack.push("X");
+			s += "| X |\n";
 		}
 		s += "+++++\n";
 		assertTrue(stack.toString().equals(s));
