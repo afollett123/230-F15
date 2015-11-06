@@ -4,35 +4,62 @@ import adt.Queue;
 
 public class LinkedQueue<T> implements Queue<T> {
 	private Node head, tail;
-	
-	@Override
+	{	
+	head = null;
+	tail = null;
+	}
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
+		Node newNode = new Node (newEntry, null);
+		if (isEmpty ())
+			head = newNode;
+		else
+			tail.setNextNode(newNode);
+		tail = newNode;
 		
 	}
 
-	@Override
+
 	public T dequeue() {
+		if(isEmpty()){
+			if (tail == head){
+				tail = null;
+			}
+		}
+		head = head.next;
+		return null;
+	}
+
+
+	private T setData(Object object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
+	private T getHead() {
 		
+		return null;
+	}
+
+
+	public T peek() {
+		if (isEmpty())
+			throw new IllegalStateException();
+		else
+		return head.getData();
+	}
+
+
+	public boolean isEmpty() {
+		
+		return (head == null) && (tail == null);
+	}
+
+
+	public void clear() {
+		if (!isEmpty()){
+		dequeue();
+		}
 	}
 	
 	public String toString() {
@@ -53,11 +80,32 @@ public class LinkedQueue<T> implements Queue<T> {
 			this(dataPortion, null);	
 		} // end constructor
 		
+		public T getData() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 		private Node(T dataPortion, Node nextNode)
 		{
 			data = dataPortion;
 			next = nextNode;	
 		} // end constructor
 	} // end Node
+	
+	public static void main(String[] args) {
+		
+		Queue q = new LinkedQueue();
+		
+		q.enqueue("Jill");
+		q.peek();
+		q.enqueue("Steph");
+		q.enqueue("Jon");
+		q.dequeue();
+		q.enqueue("Kyla");
+		q.dequeue();
+		q.enqueue("Zoe");
+		q.enqueue("Julie");
+		q.dequeue();
+	}
 
 }
