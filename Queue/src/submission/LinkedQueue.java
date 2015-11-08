@@ -9,13 +9,8 @@ public class LinkedQueue<T> implements Queue<T> {
 	tail = null;
 	}
 	public void enqueue(T newEntry) {
-		Node newNode = new Node (newEntry, null);
-		if (isEmpty ())
-			head = newNode;
-		else
-			tail.setNextNode(newNode);
-		tail = newNode;
 		
+		return null;
 	}
 
 

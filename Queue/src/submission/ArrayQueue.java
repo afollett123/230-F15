@@ -19,20 +19,21 @@ public class ArrayQueue<T> implements Queue<T> {
 	public void enqueue(T newEntry) {
 		tail = (tail + 1) % data.length;
 		data[tail] = newEntry;
-		
-		
+			
 	}
 
 
-	public T dequeue() {
+	public T dequeue(<T>) {
 		if(isEmpty())
 			throw new IllegalStateException("Queue is empty");
 		else {
-			T head = data[head];
-			data[head] = null;
-			head = (head + 1) % data.length;
+			for (int i = 0; i <Queue.data.length; i++){
+			T head = data[i];
+			data[i] = null;
+			head = (head + i) % data.length;
 			return head;
-		} // big oh is O(1)
+		}}
+			// big oh is O(1)
 	}
 
 
@@ -51,6 +52,10 @@ public class ArrayQueue<T> implements Queue<T> {
 
 
 	public void clear() {
+		if (isEmpty()){
+			throw new IllegalStateException("Queue is empty");
+		}
+		else 
 		head = 0;
 		tail = 0;
 		
