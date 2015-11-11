@@ -9,45 +9,38 @@ public class LinkedQueue<T> implements Queue<T> {
 	tail = null;
 	}
 	public void enqueue(T newEntry) {
-		
-		return null;
+	Node newNode = new Node(newEntry);
+		if (!isEmpty()){
+			tail.next = newNode;
+			tail = newNode;
+		}else
+			head = newNode;
+			tail = newNode;
 	}
 
 
 	public T dequeue() {
 		if(isEmpty()){
+			T item = head.data;
 			if (tail == head){
 				tail = null;
+				head = null;
+			}else{
+				head = head.next;
 			}
+		return item;
 		}
-		head = head.next;
 		return null;
-	}
-
-
-	private T setData(Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	private T getHead() {
-		
-		return null;
-	}
-
-
+		}
+	
 	public T peek() {
-		if (isEmpty())
-			throw new IllegalStateException();
-		else
-		return head.getData();
+		return head.data;
 	}
 
 
 	public boolean isEmpty() {
 		
-		return (head == null) && (tail == null);
+		return (head == null);
 	}
 
 
@@ -75,11 +68,6 @@ public class LinkedQueue<T> implements Queue<T> {
 			this(dataPortion, null);	
 		} // end constructor
 		
-		public T getData() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
 		private Node(T dataPortion, Node nextNode)
 		{
 			data = dataPortion;

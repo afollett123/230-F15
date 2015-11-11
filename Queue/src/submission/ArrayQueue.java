@@ -7,15 +7,6 @@ public class ArrayQueue<T> implements Queue<T> {
 	private int head, tail;
 	
 	
-//	public ArrayQueue(int initialCapacity){
-//		
-//		
-//		T[] tempQueue = (T[]) new Object[initialCapacity + 1];
-//		data = tempQueue;
-//		head = 0;
-//		tail = initialCapacity;
-//	}
-//	
 	public void enqueue(T newEntry) {
 		tail = (tail + 1) % data.length;
 		data[tail] = newEntry;
@@ -23,18 +14,17 @@ public class ArrayQueue<T> implements Queue<T> {
 	}
 
 
-	public T dequeue(<T>) {
+	public T dequeue() {
 		if(isEmpty())
 			throw new IllegalStateException("Queue is empty");
 		else {
-			for (int i = 0; i <Queue.data.length; i++){
-			T head = data[i];
-			data[i] = null;
-			head = (head + i) % data.length;
-			return head;
+			T temp = data[head];
+			data[head] = null;
+			head = (head + 1) % data.length;
+			return temp;
 		}}
 			// big oh is O(1)
-	}
+	
 
 
 	public T peek() {
@@ -47,19 +37,20 @@ public class ArrayQueue<T> implements Queue<T> {
 
 	public boolean isEmpty() {
 		
-		return head == (tail + 1) % data.length;
+		return head == -1;
 	}
 
 
 	public void clear() {
-		if (isEmpty()){
-			throw new IllegalStateException("Queue is empty");
+		if (!isEmpty()){
+			dequeue();
 		}
-		else 
-		head = 0;
-		tail = 0;
-		
 	}
+	
+	public boolean isFull() 
+    {
+        return head==0 && tail == -1 ;
+    } 
 	
 	public String toString() {
 		String s = data[head].toString();
